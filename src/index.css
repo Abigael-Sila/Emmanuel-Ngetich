@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0f172a;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+  
+  .animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Dark Mode Color Palette */
+  .text-dark-navy { color: #0f172a; }
+  .text-darker-navy { color: #1e293b; }
+  .text-darkest-navy { color: #020617; }
+  .text-electric-blue { color: #3b82f6; }
+  .text-gold-600 { color: #d97706; }
+  .text-gold-500 { color: #f59e0b; }
+  .text-gold-400 { color: #fbbf24; }
+  .text-gold-300 { color: #fcd34d; }
+  .text-cyan-400 { color: #22d3ee; }
+  
+  .bg-dark-navy { background-color: #0f172a; }
+  .bg-darker-navy { background-color: #1e293b; }
+  .bg-darkest-navy { background-color: #020617; }
+  .bg-electric-blue { background-color: #3b82f6; }
+  .bg-gold-900 { background-color: #78350f; }
+  .bg-gold-600 { background-color: #d97706; }
+  .bg-gold-500 { background-color: #f59e0b; }
+  .bg-gold-400 { background-color: #fbbf24; }
+  
+  .border-gold-300 { border-color: #fcd34d; }
+  .border-gold-400 { border-color: #fbbf24; }
+  .border-gold-500 { border-color: #f59e0b; }
+  .border-electric-blue { border-color: #3b82f6; }
+  
+  .hover\:bg-gold-600:hover { background-color: #d97706; }
+  .hover\:bg-gold-700:hover { background-color: #a16207; }
+  .hover\:text-gold-300:hover { color: #fcd34d; }
+  .hover\:text-gold-400:hover { color: #fbbf24; }
+  .hover\:text-electric-blue:hover { color: #3b82f6; }
+  .hover\:text-cyan-400:hover { color: #22d3ee; }
+  .hover\:border-gold-300:hover { border-color: #fcd34d; }
+  .hover\:border-gold-400:hover { border-color: #fbbf24; }
+  
+  .focus\:border-gold-400:focus { border-color: #fbbf24; }
+  .focus\:ring-gold-400\/50:focus { 
+    --tw-ring-color: rgb(251 191 36 / 0.5);
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  }
+  
+  /* Dark Mode Gradients */
+  .from-dark-navy { --tw-gradient-from: #0f172a; }
+  .from-darker-navy { --tw-gradient-from: #1e293b; }
+  .from-darkest-navy { --tw-gradient-from: #020617; }
+  .from-electric-blue { --tw-gradient-from: #3b82f6; }
+  .from-gold-500 { --tw-gradient-from: #f59e0b; }
+  .from-gold-600 { --tw-gradient-from: #d97706; }
+  .from-gold-700 { --tw-gradient-from: #a16207; }
+  .from-gold-900 { --tw-gradient-from: #78350f; }
+  
+  .via-darker-navy { --tw-gradient-to: rgb(30 41 59 / 0); --tw-gradient-stops: var(--tw-gradient-from), #1e293b, var(--tw-gradient-to); }
+  
+  .to-darker-navy { --tw-gradient-to: #1e293b; }
+  .to-darkest-navy { --tw-gradient-to: #020617; }
+  .to-electric-blue { --tw-gradient-to: #3b82f6; }
+  .to-gold-500 { --tw-gradient-to: #f59e0b; }
+  .to-gold-600 { --tw-gradient-to: #d97706; }
+  .to-gold-700 { --tw-gradient-to: #a16207; }
+  .to-gold-400 { --tw-gradient-to: #fbbf24; }
+  .to-blue-500 { --tw-gradient-to: #3b82f6; }
+  .to-orange-500 { --tw-gradient-to: #f97316; }
+  .to-pink-500 { --tw-gradient-to: #ec4899; }
+  .to-cyan-500 { --tw-gradient-to: #06b6d4; }
+  .to-blue-400 { --tw-gradient-to: #60a5fa; }
+  
+  .from-red-500 { --tw-gradient-from: #ef4444; }
+  .from-green-500 { --tw-gradient-from: #22c55e; }
+  .from-purple-500 { --tw-gradient-from: #a855f7; }
+  .from-indigo-500 { --tw-gradient-from: #6366f1; }
+  
+  /* Electric Blue variants */
+  .electric-blue { color: #3b82f6; }
+  .bg-electric-blue\/20 { background-color: rgb(59 130 246 / 0.2); }
+  .border-electric-blue\/30 { border-color: rgb(59 130 246 / 0.3); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #f59e0b);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #d97706);
+}
+
+/* Additional dark mode enhancements */
+@layer utilities {
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  
+  .shadow-gold-500\/10 {
+    box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.1), 0 4px 6px -2px rgb(245 158 11 / 0.05);
+  }
+  
+  .shadow-gold-500\/25 {
+    box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.25), 0 4px 6px -2px rgb(245 158 11 / 0.1);
+  }
+  
+  .hover\:shadow-gold-500\/10:hover {
+    box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.1), 0 4px 6px -2px rgb(245 158 11 / 0.05);
+  }
+  
+  .hover\:shadow-gold-500\/25:hover {
+    box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.25), 0 4px 6px -2px rgb(245 158 11 / 0.1);
+  }
+}
