@@ -1,74 +1,127 @@
-import { ChevronDown, Mail, Linkedin, Github } from 'lucide-react';
+import { ChevronDown, Mail, Linkedin, Github } from "lucide-react";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-dark-navy via-darker-navy to-darkest-navy text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 rounded-full bg-gold-400 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-electric-blue blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-400 blur-3xl animate-pulse"></div>
+    <section
+      id="home"
+      // Local HSL token for gold accents (keeps design-token friendly usage)
+      style={{ ["--gold" as any]: "46 92% 55%" }}
+      className="relative min-h-[100svh] overflow-hidden bg-background text-foreground"
+      aria-label="Hero section"
+    >
+      {/* Subtle grid and vignettes */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+      >
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,transparent_0,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        </div>
+
+        {/* Golden glow orbs */}
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[radial-gradient(circle_at_30%_30%,hsl(var(--gold)/0.35),transparent_60%)] blur-2xl" />
+        <div className="absolute -bottom-28 -right-28 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_70%_70%,hsl(var(--gold)/0.25),transparent_55%)] blur-2xl" />
+
+        {/* Corner stroke accents */}
+        <div className="absolute inset-0">
+          <span className="absolute top-6 left-6 h-14 w-14 border-l border-t border-[hsl(var(--gold))]/60 rounded-tl-md" />
+          <span className="absolute bottom-6 right-6 h-14 w-14 border-b border-r border-[hsl(var(--gold))]/60 rounded-br-md" />
+        </div>
       </div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gold-400 bg-clip-text text-transparent">
+
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Framed content card with soft golden ring */}
+          <div className="relative rounded-2xl border border-[hsl(var(--gold))/0.2] bg-background/50 backdrop-blur-sm px-6 py-10 md:px-10 md:py-14">
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-[hsl(var(--gold))/0.25] [box-shadow:0_0_0_1px_hsl(var(--gold)/0.12)_inset,0_18px_60px_-20px_hsl(var(--gold)/0.35)]" />
+
+            <h1 className="bg-gradient-to-r from-foreground via-foreground to-[hsl(var(--gold))] bg-clip-text text-transparent text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
               Emmanuel Kiprono Ngetich
             </h1>
-            <h2 className="text-2xl md:text-3xl text-electric-blue mb-6 font-semibold">
+
+            <h2 className="mt-4 text-lg sm:text-xl md:text-2xl font-semibold text-muted-foreground">
               Electrical & Telecommunications Engineer
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Passionate about innovative solutions in electrical systems, telecommunications, 
+
+            <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-muted-foreground/90">
+              Passionate about innovative solutions in electrical systems, telecommunications,
               and emerging technologies. Specializing in IoT, renewable energy, and smart systems.
             </p>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up-delay">
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-dark-navy px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gold-500/25"
-            >
-              View My Work
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="border-2 border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-dark-navy px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-gold-500/25"
-            >
-              Get In Touch
-            </button>
-          </div>
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              {/* Primary (gold fill + shimmer) */}
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="group relative inline-flex items-center justify-center rounded-full px-8 py-3 font-semibold text-[hsl(var(--background))] transition-transform duration-300 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--gold))]/60 ring-offset-2 ring-offset-background
+                           bg-[linear-gradient(135deg,hsl(var(--gold))_0%,hsl(var(--gold)/0.88)_100%)] shadow-[0_12px_40px_hsl(var(--gold)/0.35)]"
+                aria-label="View my work"
+              >
+                <span className="relative z-[1]">View My Work</span>
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-[linear-gradient(110deg,transparent, hsl(var(--background)/0.15), transparent)] transition-transform duration-700 ease-out group-hover:translate-x-full" />
+                <span className="pointer-events-none absolute inset-0 rounded-full border border-white/10" />
+              </button>
 
-          <div className="flex justify-center space-x-6 mb-12 animate-fade-in-up-delay-2">
-            <a href="#" title="Email Me" className="text-gray-400 hover:text-gold-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 p-3 rounded-full hover:bg-white/10">
-              <Mail size={24} />
-            </a>
-            <a href="#" title="LinkedIn Profile" className="text-gray-400 hover:text-electric-blue transition-all duration-300 transform hover:scale-110 hover:rotate-12 p-3 rounded-full hover:bg-white/10">
-              <Linkedin size={24} />
-            </a>
-            <a href="#" title="GitHub Profile" className="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 p-3 rounded-full hover:bg-white/10">
-              <Github size={24} />
-            </a>
+              {/* Secondary (gold outline + glow on hover) */}
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="group relative inline-flex items-center justify-center rounded-full px-8 py-3 font-semibold text-[hsl(var(--gold))] transition-all duration-300
+                           border border-[hsl(var(--gold)/0.65)] hover:border-[hsl(var(--gold))] hover:shadow-[0_10px_40px_hsl(var(--gold)/0.28)]"
+                aria-label="Get in touch"
+              >
+                <span className="relative z-[1]">Get In Touch</span>
+                <span className="pointer-events-none absolute inset-0 rounded-full [box-shadow:inset_0_0_0_1px_hsl(var(--gold)/0.2)] group-hover:[box-shadow:inset_0_0_0_2px_hsl(var(--gold))]" />
+              </button>
+            </div>
+
+            {/* Social icons */}
+            <div className="mt-8 flex justify-center gap-5">
+              <a
+                href="#"
+                title="Email Me"
+                className="rounded-full border border-white/10 p-3 text-muted-foreground transition-all duration-300 hover:scale-110 hover:rotate-3 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold))/70] hover:shadow-[0_0_0_4px_hsl(var(--gold)/0.12)_inset]"
+                aria-label="Email"
+              >
+                <Mail size={22} />
+              </a>
+              <a
+                href="#"
+                title="LinkedIn Profile"
+                className="rounded-full border border-white/10 p-3 text-muted-foreground transition-all duration-300 hover:scale-110 hover:-rotate-3 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold))/70] hover:shadow-[0_0_0_4px_hsl(var(--gold)/0.12)_inset]"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={22} />
+              </a>
+              <a
+                href="#"
+                title="GitHub Profile"
+                className="rounded-full border border-white/10 p-3 text-muted-foreground transition-all duration-300 hover:scale-110 hover:rotate-1 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold))/70] hover:shadow-[0_0_0_4px_hsl(var(--gold)/0.12)_inset]"
+                aria-label="GitHub"
+              >
+                <Github size={22} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <button
-          onClick={() => scrollToSection('about')}
-          className="text-white/60 hover:text-gold-400 transition-colors duration-300 p-2 rounded-full hover:bg-white/10"
+          onClick={() => scrollToSection("about")}
+          className="group inline-flex items-center justify-center rounded-full p-2 text-muted-foreground transition-colors duration-300 hover:text-[hsl(var(--gold))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--gold))]/60"
           title="Scroll to About Section"
+          aria-label="Scroll to About Section"
         >
-          <ChevronDown size={32} />
+          <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-background/60 backdrop-blur-md">
+            <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[hsl(var(--gold))/0.25]" />
+            <ChevronDown size={26} className="animate-bounce" />
+          </span>
         </button>
       </div>
     </section>
